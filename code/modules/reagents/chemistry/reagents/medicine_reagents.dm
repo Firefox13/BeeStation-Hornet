@@ -454,16 +454,18 @@
 	overdose_threshold = 30
 
 /datum/reagent/medicine/omnizine/on_mob_life(mob/living/carbon/M)
-	M.adjustToxLoss(-0.5*REM, 0)
-	M.adjustOxyLoss(-0.5*REM, 0)
-	M.adjustBruteLoss(-0.5*REM, 0)
-	M.adjustFireLoss(-0.5*REM, 0)
+	M.adjustToxLoss(-1*REM, 0)
+	M.adjustOxyLoss(-1*REM, 0)
+	M.adjustBruteLoss(1*REM, 0)
+	M.adjustFireLoss(-1*REM, 0)
+	M.adjustCloneLoss(-1*REM, 0)
 	..()
 	. = 1
 
 /datum/reagent/medicine/omnizine/overdose_process(mob/living/M)
 	M.adjustToxLoss(1.5*REM, 0)
 	M.adjustOxyLoss(1.5*REM, 0)
+	M.adjustCloneLoss(1.5*REM, 0)
 	M.adjustBruteLoss(1.5*REM, FALSE, FALSE, BODYPART_ORGANIC)
 	M.adjustFireLoss(1.5*REM, FALSE, FALSE, BODYPART_ORGANIC)
 	..()
@@ -1464,4 +1466,4 @@
 /datum/reagent/medicine/polypyr/overdose_process(mob/living/M)
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, 0.5)
 	..()
-	. = 1 
+	. = 1
